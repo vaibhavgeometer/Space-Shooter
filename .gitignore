@@ -1,0 +1,4 @@
+high_score.json
+__pycache__/
+*.pyc
+.pygame_stats

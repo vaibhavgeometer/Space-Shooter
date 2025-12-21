@@ -161,7 +161,7 @@ def draw_menu(screen):
         btn.draw(screen)
 
     # Footer
-    version = globals.font_sm.render("v1.3", True, (50, 50, 60))
+    version = globals.font_sm.render("v1", True, (50, 50, 60))
     screen.blit(version, (10, SCREEN_HEIGHT - 30))
 
 def draw_settings(screen):
