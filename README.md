@@ -1,6 +1,6 @@
-Space Shooter
+# Space Shooter
 
-A simple space shooter game built with Pygame, created using antigravity and gemini.
+A simple space shooter game built with Pygame, created using Google Antigravity and Gemini (Vibe Coding).
 
 ## Installation
 
@@ -11,7 +11,7 @@ pip install pygame
 ## Usage
 
 ```bash
-python v1.py
+python main.py
 ```
 
 ## Features

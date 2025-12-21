@@ -1,0 +1,22 @@
+{
+    "EASY": {
+        "high_score": 45,
+        "games_played": 1
+    },
+    "NORMAL": {
+        "high_score": 0,
+        "games_played": 0
+    },
+    "HARD": {
+        "high_score": 0,
+        "games_played": 0
+    },
+    "EXTREME": {
+        "high_score": 0,
+        "games_played": 0
+    },
+    "NIGHTMARE": {
+        "high_score": 52,
+        "games_played": 1
+    }
+}
