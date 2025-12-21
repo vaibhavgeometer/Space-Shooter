@@ -1,6 +1,6 @@
 Space Shooter
 
-A simple space shooter game built with Pygame.
+A simple space shooter game built with Pygame, created using antigravity and gemini.
 
 ## Installation
 
