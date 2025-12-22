@@ -8,10 +8,6 @@ SCREEN_HEIGHT = 600
 # Game Version
 VERSION = "v1"
 
-
-# High score file
-HIGH_SCORE_FILE = "high_score.json"
-
 # Colors (Neon/Cyberpunk Palette)
 BLACK = (10, 10, 18)
 WHITE = (255, 255, 255)
@@ -31,6 +27,7 @@ class GameState(Enum):
     GAME_OVER = 4
     SETTINGS = 5
     STATS = 6
+    CONTROLS = 7
 
 class Difficulty(Enum):
     EASY = 1

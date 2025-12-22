@@ -1,6 +1,5 @@
 import pygame
 import sys
-import os
 import random
 
 # Initialize Pygame before importing modules that might use it
@@ -17,22 +16,12 @@ from game import data
 from game import core
 from game import ui
 
-# Helper function to find resources (works for dev & PyInstaller)
-def resource_path(relative_path):
-    try:
-        # PyInstaller creates a temp folder and stores path in _MEIPASS
-        base_path = sys._MEIPASS
-    except Exception:
-        base_path = os.path.abspath(".")
-
-    return os.path.join(base_path, relative_path)
-
 def main():
     # Setup Screen
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     try:
-        # Load icon using resource_path to ensure it works in exe
-        icon_path = resource_path("game/Icon.png")
+        # Load icon
+        icon_path = "game/Icon.png"
         icon = pygame.image.load(icon_path)
         pygame.display.set_icon(icon)
     except Exception as e:
@@ -51,6 +40,7 @@ def main():
     ui.init_menu_buttons()
     ui.init_settings_buttons()
     ui.init_stats_buttons()
+    ui.init_controls_buttons()
     ui.init_pause_buttons()
     ui.init_game_over_buttons()
     
@@ -97,6 +87,10 @@ def main():
                 for btn in globals.stats_buttons:
                     btn.handle_event(event)
 
+            elif globals.game_state == GameState.CONTROLS:
+                for btn in globals.controls_buttons:
+                    btn.handle_event(event)
+
             elif globals.game_state == GameState.PAUSED:
                 for btn in globals.pause_buttons:
                     btn.handle_event(event)
@@ -107,7 +101,7 @@ def main():
                     
             # Player Input
             elif globals.game_state == GameState.PLAYING:
-                 if event.type == pygame.KEYDOWN and event.key == pygame.K_z:
+                 if event.type == pygame.KEYDOWN and (event.key == pygame.K_z or event.key == pygame.K_SPACE):
                      if globals.player:
                         globals.player.shoot()
 
@@ -123,6 +117,8 @@ def main():
             ui.draw_settings(screen)
         elif globals.game_state == GameState.STATS:
             ui.draw_stats(screen)
+        elif globals.game_state == GameState.CONTROLS:
+            ui.draw_controls(screen)
         elif globals.game_state == GameState.PLAYING:
             # Draw Background
             for s in globals.stars:

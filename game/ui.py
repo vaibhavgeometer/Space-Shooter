@@ -1,7 +1,7 @@
 import pygame
 from .constants import *
 from . import globals
-from .audio import play_sound, change_volume
+from .audio import play_sound, change_volume, change_sfx_volume
 from .core import start_game
 from .data import change_difficulty
 
@@ -52,6 +52,9 @@ def action_settings():
 def action_stats():
     globals.game_state = GameState.STATS
 
+def action_controls():
+    globals.game_state = GameState.CONTROLS
+
 def action_quit():
     globals.should_quit = True
 
@@ -61,28 +64,38 @@ def action_back():
 # --- Button Initialization ---
 def init_menu_buttons():
     globals.buttons = [
-        Button("PLAY", SCREEN_WIDTH//2 - 100, 300, 200, 50, action_play, NEON_GREEN),
-        Button("SETTINGS", SCREEN_WIDTH//2 - 100, 370, 200, 50, action_settings, NEON_BLUE),
-        Button("STATS", SCREEN_WIDTH//2 - 100, 440, 200, 50, action_stats, NEON_PURPLE),
-        Button("QUIT", SCREEN_WIDTH//2 - 100, 510, 200, 50, action_quit, NEON_RED)
+        Button("PLAY", SCREEN_WIDTH//2 - 100, 280, 200, 50, action_play, NEON_GREEN),
+        Button("SETTINGS", SCREEN_WIDTH//2 - 100, 340, 200, 50, action_settings, NEON_BLUE),
+        Button("STATS", SCREEN_WIDTH//2 - 100, 400, 200, 50, action_stats, NEON_PURPLE),
+        Button("CONTROLS", SCREEN_WIDTH//2 - 100, 460, 200, 50, action_controls, NEON_ORANGE),
+        Button("QUIT", SCREEN_WIDTH//2 - 100, 520, 200, 50, action_quit, NEON_RED)
     ]
 
 def init_settings_buttons():
     globals.settings_buttons = [
-        # Volume
-        Button("+", 560, 225, 50, 50, lambda: change_volume(0.1), NEON_GREEN, DARK_UI),
-        Button("-", 190, 225, 50, 50, lambda: change_volume(-0.1), NEON_RED, DARK_UI),
+        # Music Volume
+        Button("+", 560, 185, 50, 50, lambda: change_volume(0.1), NEON_GREEN, DARK_UI),
+        Button("-", 190, 185, 50, 50, lambda: change_volume(-0.1), NEON_RED, DARK_UI),
+
+        # SFX Volume
+        Button("+", 560, 285, 50, 50, lambda: change_sfx_volume(0.1), NEON_GREEN, DARK_UI),
+        Button("-", 190, 285, 50, 50, lambda: change_sfx_volume(-0.1), NEON_RED, DARK_UI),
         
         # Difficulty
-        Button(">", 560, 375, 50, 50, lambda: change_difficulty(1), NEON_GREEN, DARK_UI),
-        Button("<", 190, 375, 50, 50, lambda: change_difficulty(-1), NEON_RED, DARK_UI),
+        Button(">", 560, 385, 50, 50, lambda: change_difficulty(1), NEON_GREEN, DARK_UI),
+        Button("<", 190, 385, 50, 50, lambda: change_difficulty(-1), NEON_RED, DARK_UI),
         
-        Button("BACK", SCREEN_WIDTH//2 - 100, 500, 200, 50, action_back, WHITE)
+        Button("BACK", SCREEN_WIDTH//2 - 100, 520, 200, 50, action_back, WHITE)
     ]
 
 def init_stats_buttons():
     globals.stats_buttons = [
         Button("BACK", SCREEN_WIDTH//2 - 100, 500, 200, 50, action_back, WHITE)
+    ]
+
+def init_controls_buttons():
+    globals.controls_buttons = [
+        Button("BACK", SCREEN_WIDTH//2 - 100, 520, 200, 50, action_back, WHITE)
     ]
 
 def init_pause_buttons():
@@ -171,13 +184,20 @@ def draw_settings(screen):
     title = globals.font_lg.render("SETTINGS", True, NEON_BLUE)
     screen.blit(title, title.get_rect(center=(SCREEN_WIDTH//2, 100)))
     
-    # Volume Control
+    # Music Volume Control
     vol_text = globals.font_md.render(f"MUSIC VOLUME: {int(globals.music_volume * 100)}%", True, WHITE)
-    screen.blit(vol_text, vol_text.get_rect(center=(SCREEN_WIDTH//2, 200)))
+    screen.blit(vol_text, vol_text.get_rect(center=(SCREEN_WIDTH//2, 160)))
     
     bar_w, bar_h = 300, 20
-    pygame.draw.rect(screen, (50, 50, 50), (SCREEN_WIDTH//2 - 150, 240, bar_w, bar_h))
-    pygame.draw.rect(screen, NEON_GREEN, (SCREEN_WIDTH//2 - 150, 240, int(bar_w * globals.music_volume), bar_h))
+    pygame.draw.rect(screen, (50, 50, 50), (SCREEN_WIDTH//2 - 150, 200, bar_w, bar_h))
+    pygame.draw.rect(screen, NEON_GREEN, (SCREEN_WIDTH//2 - 150, 200, int(bar_w * globals.music_volume), bar_h))
+
+    # SFX Volume Control
+    sfx_text = globals.font_md.render(f"SFX VOLUME: {int(globals.sfx_volume * 100)}%", True, WHITE)
+    screen.blit(sfx_text, sfx_text.get_rect(center=(SCREEN_WIDTH//2, 260)))
+    
+    pygame.draw.rect(screen, (50, 50, 50), (SCREEN_WIDTH//2 - 150, 300, bar_w, bar_h))
+    pygame.draw.rect(screen, NEON_GREEN, (SCREEN_WIDTH//2 - 150, 300, int(bar_w * globals.sfx_volume), bar_h))
     
     # Difficulty Control
     diff_name, _ = DIFFICULTY_PARAMS[globals.current_difficulty]
@@ -190,10 +210,10 @@ def draw_settings(screen):
     }
     diff_col = diff_colors.get(globals.current_difficulty, WHITE)
     diff_label = globals.font_md.render("DIFFICULTY", True, WHITE)
-    screen.blit(diff_label, diff_label.get_rect(center=(SCREEN_WIDTH//2, 350)))
+    screen.blit(diff_label, diff_label.get_rect(center=(SCREEN_WIDTH//2, 360)))
     
     diff_txt = globals.font_lg.render(diff_name, True, diff_col)
-    screen.blit(diff_txt, diff_txt.get_rect(center=(SCREEN_WIDTH//2, 400)))
+    screen.blit(diff_txt, diff_txt.get_rect(center=(SCREEN_WIDTH//2, 410)))
     
     for btn in globals.settings_buttons:
         btn.draw(screen)
@@ -252,6 +272,37 @@ def draw_stats(screen):
     screen.blit(t_total, t_total.get_rect(center=(SCREEN_WIDTH//2, footer_y)))
         
     for btn in globals.stats_buttons:
+        btn.draw(screen)
+
+def draw_controls(screen):
+    screen.fill(BLACK)
+    for star in globals.stars: star.draw(screen)
+    
+    title = globals.font_lg.render("CONTROLS", True, NEON_ORANGE)
+    screen.blit(title, title.get_rect(center=(SCREEN_WIDTH//2, 80)))
+    
+    controls_list = [
+        ("MOVE", "WASD or ARROW KEYS"),
+        ("SHOOT", "SPACE or Z"),
+        ("PAUSE", "P"),
+        ("RETRY", "R (When Game Over)"),
+        ("SELECT", "MOUSE CLICK")
+    ]
+    
+    start_y = 180
+    row_height = 60
+    
+    for i, (action, key) in enumerate(controls_list):
+        act_txt = globals.font_md.render(action, True, NEON_BLUE)
+        key_txt = globals.font_md.render(key, True, WHITE)
+        
+        # Left align action, right align key relative to center
+        # Or just two columns
+        
+        screen.blit(act_txt, act_txt.get_rect(midright=(SCREEN_WIDTH//2 - 20, start_y + i * row_height)))
+        screen.blit(key_txt, key_txt.get_rect(midleft=(SCREEN_WIDTH//2 + 20, start_y + i * row_height)))
+        
+    for btn in globals.controls_buttons:
         btn.draw(screen)
 
 def draw_pause(screen):

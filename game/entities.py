@@ -90,9 +90,9 @@ class Player(pygame.sprite.Sprite):
     def update(self):
         keys = pygame.key.get_pressed()
         dx = 0
-        if keys[pygame.K_LEFT] and self.rect.left > 0:
+        if (keys[pygame.K_LEFT] or keys[pygame.K_a]) and self.rect.left > 0:
             dx = -1
-        if keys[pygame.K_RIGHT] and self.rect.right < SCREEN_WIDTH:
+        if (keys[pygame.K_RIGHT] or keys[pygame.K_d]) and self.rect.right < SCREEN_WIDTH:
             dx = 1
         
         self.pos_x += dx * self.speed

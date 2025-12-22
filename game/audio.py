@@ -99,6 +99,7 @@ def load_all_sounds():
 
 def play_sound(name):
     if name in globals.sounds and globals.sounds[name]:
+        globals.sounds[name].set_volume(globals.sfx_volume)
         globals.sounds[name].play()
 
 def play_background_music():
@@ -110,3 +111,6 @@ def change_volume(amount):
     globals.music_volume = max(0.0, min(1.0, globals.music_volume + amount))
     if globals.background_music:
         globals.background_music.set_volume(globals.music_volume)
+
+def change_sfx_volume(amount):
+    globals.sfx_volume = max(0.0, min(1.0, globals.sfx_volume + amount))

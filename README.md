@@ -28,6 +28,9 @@ The game features a modular engine structure, smooth particle effects, and a dyn
 - **Progression**:
   - 🏆 **High Score System**: Tracks your best runs.
   - 📊 **Stats Menu**: Detailed gameplay statistics.
+- **Settings**:
+  - 🔊 **Volume Control**: Adjust game audio levels.
+  - 🎮 **Controls Menu**: View game controls within the game.
 - **Audio**: Immersive sound effects and background music.
 
 ## 🕹️ Controls
@@ -36,7 +39,7 @@ The game features a modular engine structure, smooth particle effects, and a dyn
 | :--- | :---: |
 | **Move Left** | `←` Left Arrow |
 | **Move Right** | `→` Right Arrow |
-| **Shoot** | `Z` |
+| **Shoot** | `Z` or `Space` |
 | **Pause Game** | `P` |
 | **Retry (Game Over)** | `R` |
 
@@ -69,16 +72,21 @@ The project is modularized for cleaner code and scalability:
 ```text
 Space-Shooter/
 ├── main.py             # Entry point
-├── high_score.json     # Local data persistence
-├── game/               # Game Engine Package
-│   ├── core.py         # Main game loop logic
-│   ├── entities.py     # Player, Enemy, Bullet classes
-│   ├── ui.py           # Menus and HUD rendering
-│   ├── particles.py    # Visual effects systems
-│   ├── audio.py        # Sound management
-│   ├── data.py         # Save/Load handling
-│   └── ...
-└── README.md
+├── LICENSE
+├── README.md
+├── .gitignore
+│
+└── game/               # Game Engine Package
+    ├── __init__.py     # Package initialization
+    ├── audio.py        # Sound management
+    ├── constants.py    # Game constants and configuration
+    ├── core.py         # Main game loop logic
+    ├── data.py         # Save/Load handling and difficulty management
+    ├── entities.py     # Player, Enemy, Bullet classes
+    ├── globals.py      # Global state variables
+    ├── particles.py    # Visual effects systems
+    ├── ui.py           # Menus and HUD rendering
+    └── utils.py        # Helper functions
 ```
 
 ## 🤝 Contributing

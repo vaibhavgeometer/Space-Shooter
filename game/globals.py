@@ -27,6 +27,7 @@ current_difficulty = Difficulty.NORMAL
 sounds = {}
 background_music = None
 music_volume = 0.3
+sfx_volume = 0.3
 
 # UI
 buttons = []
@@ -34,6 +35,7 @@ settings_buttons = []
 stats_buttons = []
 pause_buttons = []
 game_over_buttons = []
+controls_buttons = []
 
 # Background
 stars = []

@@ -1,6 +1,9 @@
 # Game Data
 high_score.json
+save_data.dat
 .pygame_stats
+*.log
+*.sqlite
 
 # Python
 __pycache__/
