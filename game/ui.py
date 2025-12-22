@@ -282,7 +282,7 @@ def draw_controls(screen):
     screen.blit(title, title.get_rect(center=(SCREEN_WIDTH//2, 80)))
     
     controls_list = [
-        ("MOVE", "WASD or ARROW KEYS"),
+        ("MOVE", "A / D or ARROW KEYS"),
         ("SHOOT", "SPACE or Z"),
         ("PAUSE", "P"),
         ("RETRY", "R (When Game Over)"),

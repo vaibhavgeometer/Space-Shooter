@@ -37,8 +37,8 @@ The game features a modular engine structure, smooth particle effects, and a dyn
 
 | Action | Key |
 | :--- | :---: |
-| **Move Left** | `←` Left Arrow |
-| **Move Right** | `→` Right Arrow |
+| **Move Left** | `A` or `←` Left Arrow |
+| **Move Right** | `D` or `→` Right Arrow |
 | **Shoot** | `Z` or `Space` |
 | **Pause Game** | `P` |
 | **Retry (Game Over)** | `R` |
