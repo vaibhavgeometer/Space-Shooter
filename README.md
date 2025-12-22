@@ -1,4 +1,4 @@
-# 🚀 Neon Space Shooter
+# 🚀 Space Shooter
 
 > **A high-octane, neon-drenched arcade shooter built with Python and Pygame.**
 > *Created with Google Antigravity & Vibe Coding.*
@@ -12,7 +12,7 @@
 
 ## 🎮 Overview
 
-**Neon Space Shooter** is a fast-paced vertical scrolling shooter that combines classic arcade mechanics with modern "neon" aesthetics. Battle through waves of enemies, dodge bullet hell patterns, and survive as long as you can to top the leaderboards.
+**Space Shooter** is a fast-paced vertical scrolling shooter that combines classic arcade mechanics with modern "neon" aesthetics. Battle through waves of enemies, dodge bullet hell patterns, and survive as long as you can to top the leaderboards.
 
 The game features a modular engine structure, smooth particle effects, and a dynamic difficulty system that ramps up the challenge.
 

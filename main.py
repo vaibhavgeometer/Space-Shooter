@@ -19,7 +19,12 @@ from game import ui
 def main():
     # Setup Screen
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    pygame.display.set_caption("NEON SPACE SHOOTER")
+    try:
+        icon = pygame.image.load("game/Icon.png")
+        pygame.display.set_icon(icon)
+    except FileNotFoundError:
+        pass
+    pygame.display.set_caption("Space Shooter")
     clock = pygame.time.Clock()
 
     # Initialization

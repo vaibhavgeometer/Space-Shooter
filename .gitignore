@@ -1,4 +1,21 @@
+# Game Data
 high_score.json
+.pygame_stats
+
+# Python
 __pycache__/
 *.pyc
-.pygame_stats
+
+# Distribution / Packaging
+build/
+dist/
+*.spec
+
+# Environments
+.env
+venv/
+env/
+
+# Editor
+.vscode/
+.idea/

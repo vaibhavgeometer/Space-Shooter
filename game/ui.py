@@ -147,10 +147,10 @@ def draw_menu(screen):
         star.draw(screen)
         
     # Title
-    title = globals.font_xl.render("NEON SHOOTER", True, NEON_BLUE)
+    title = globals.font_xl.render("Space Shooter", True, NEON_BLUE)
     t_rect = title.get_rect(center=(SCREEN_WIDTH // 2, 120))
     for offset in range(3, 0, -1):
-        glow = globals.font_xl.render("NEON SHOOTER", True, (0, 100, 255))
+        glow = globals.font_xl.render("Space Shooter", True, (0, 100, 255))
         glow.set_alpha(50)
         screen.blit(glow, (t_rect.x - offset, t_rect.y))
         screen.blit(glow, (t_rect.x + offset, t_rect.y))
