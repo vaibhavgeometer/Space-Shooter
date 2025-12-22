@@ -5,6 +5,10 @@ from enum import Enum
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
+# Game Version
+VERSION = "v1"
+
+
 # High score file
 HIGH_SCORE_FILE = "high_score.json"
 
