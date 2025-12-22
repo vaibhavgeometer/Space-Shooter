@@ -4,18 +4,55 @@ high_score.json
 
 # Python
 __pycache__/
-*.pyc
-
-# Distribution / Packaging
-build/
-dist/
-*.spec
-
-# Environments
-.env
-venv/
+*.py[cod]
+*$py.class
+*.so
+.Python
 env/
+venv/
+.venv/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# Editor
+# Installer / Packaging
+*.spec
+*.exe
+*.msi
+
+# Editor / IDE
 .vscode/
 .idea/
+*.swp
+*.swo
+
+# Operating System
+.DS_Store
+.DS_Store?
+._*
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Specific Build Output
+Space-Shooter-v*/

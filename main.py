@@ -1,5 +1,6 @@
 import pygame
 import sys
+import os
 import random
 
 # Initialize Pygame before importing modules that might use it
@@ -16,14 +17,27 @@ from game import data
 from game import core
 from game import ui
 
+# Helper function to find resources (works for dev & PyInstaller)
+def resource_path(relative_path):
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 def main():
     # Setup Screen
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     try:
-        icon = pygame.image.load("game/Icon.png")
+        # Load icon using resource_path to ensure it works in exe
+        icon_path = resource_path("game/Icon.png")
+        icon = pygame.image.load(icon_path)
         pygame.display.set_icon(icon)
-    except FileNotFoundError:
-        pass
+    except Exception as e:
+        print(f"Warning: Could not load icon: {e}")
+
     pygame.display.set_caption("Space Shooter")
     clock = pygame.time.Clock()
 
