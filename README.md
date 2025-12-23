@@ -43,62 +43,6 @@ The game features a modular engine structure, smooth particle effects, and a dyn
 | **Pause Game** | `P` |
 | **Retry (Game Over)** | `R` |
 
-## 🛠️ Installation
-
-1.  **Clone the repository** (or download usage files):
-    ```bash
-    git clone https://github.com/vaibhavgeometer/Space-Shooter.git
-    cd Space-Shooter
-    ```
-
-2.  **Install Dependencies**:
-    You need Python installed. Then run:
-    ```bash
-    pip install pygame
-    ```
-
-## 🚀 How to Run
-
-Execute the main entry point from the project root:
-
-```bash
-python main.py
-```
-
-## 📂 Project Structure
-
-The project is modularized for cleaner code and scalability:
-
-```text
-Space-Shooter/
-├── main.py             # Entry point
-├── LICENSE
-├── README.md
-├── .gitignore
-│
-└── game/               # Game Engine Package
-    ├── __init__.py     # Package initialization
-    ├── audio.py        # Sound management
-    ├── constants.py    # Game constants and configuration
-    ├── core.py         # Main game loop logic
-    ├── data.py         # Save/Load handling and difficulty management
-    ├── entities.py     # Player, Enemy, Bullet classes
-    ├── globals.py      # Global state variables
-    ├── particles.py    # Visual effects systems
-    ├── ui.py           # Menus and HUD rendering
-    └── utils.py        # Helper functions
-```
-
-## 🤝 Contributing
-
-Contributions are welcome! Whether it's bug fixes, new enemy types, or visual enhancements:
-
-1.  Fork the repository.
-2.  Create your feature branch (`git checkout -b feature/AmazingFeature`).
-3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4.  Push to the branch (`git push origin feature/AmazingFeature`).
-5.  Open a Pull Request.
-
 ## 📝 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
