@@ -5,8 +5,6 @@
 
 ![Language](https://img.shields.io/badge/Language-Python_3-blue.svg)
 ![Library](https://img.shields.io/badge/Library-Pygame-green.svg)
-![Version](https://img.shields.io/badge/Version-v1-blueviolet.svg)
-![Status](https://img.shields.io/badge/Status-Active-orange.svg)
 
 ---
 
